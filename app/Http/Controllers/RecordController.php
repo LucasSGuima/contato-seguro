@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RecordRequest;
+use App\Http\Requests\RecordStoreRequest;
+use App\Http\Requests\RecordUpdateRequest;
+use App\Models\Record;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class RecordController extends Controller
 {
-    public function record(Request $request)
+    public function record(RecordRequest $request)
     {
-        $deleted = $request->input('deleted', null);
-        $type = $request->input('type', null);
-        $orderBy = $request->input('order_by', null);
-        $offset = $request->input('offset', null);
-        $limit = $request->input('limit', null);
+        $deleted = $request->validated('deleted');
+        $type = $request->validated('type');
+        $orderBy = $request->validated('order_by');
+        $offset = $request->validated('offset');
+        $limit = $request->validated('limit');
 
         $query = DB::table('registros');
 
@@ -42,58 +46,34 @@ class RecordController extends Controller
         return response()->json($registros);
     }
 
-    public function store(Request $request)
+    public function store(RecordStoreRequest $request)
     {
-        $data = $request->validate([
-            'type' => 'required|in:duvida,problema,sugestao',
-            'message' => 'required|string',
-            'is_identified' => 'required|boolean',
-            'whistleblower_name' => 'nullable|string',
-            'whistleblower_birth' => 'nullable|date',
-            'created_at' => 'required|date',
-            'deleted' => 'required|boolean',
-        ]);
-
-        $data['id'] = uniqid();
-
-        $registro = DB::table('registros')->insert($data);
-
+        $input = $request->validated();
+        Record::create($input);
         return response()->json(['message' => 'Registro criado com sucesso'], 201);
     }
 
-    public function show($id)
+    public function show(Record $record)
     {
-        $registro = DB::table('registros')
-                        ->where('id', $id)
-                        ->first();
-
-        if ($registro) {
-            return response()->json($registro);
+        if ($record) {
+            return response()->json($record);
         } else {
             return response()->json(['message' => 'Registro não encontrado'], 404);
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(RecordUpdateRequest $request, Record $record)
     {
-        $data = $request->validate([
-            'type' => 'in:duvida,problema,sugestao',
-            'message' => 'string',
-            'is_identified' => 'boolean',
-            'whistleblower_name' => 'nullable|string',
-            'whistleblower_birth' => 'nullable|date',
-            'created_at' => 'date',
-            'deleted' => 'boolean',
-        ]);
+        $input = $request->validated();
+        $record->fill($input);
+        $record->save();
 
-        DB::table('registros')->where('id', $id)->update($data);
         return response()->json(['message' => 'Registro atualizado com sucesso']);
     }
 
-    public function destroy($id)
+    public function destroy(Record $record)
     {
-        DB::table('registros')->where('id', $id)->delete();
+        $record->delete();
         return response()->json(['message' => 'Registro removido com sucesso']);
     }
-
 }
