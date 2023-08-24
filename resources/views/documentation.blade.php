@@ -52,6 +52,9 @@
                         <div class="card-body">
                             <div class="space-y-4">
 
+                                <iframe width="100%" height="400px" src="https://www.youtube.com/embed/J0YPiMLrQlA" title="Vídeo explicativo do desafio Técnico - Contato Seguro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                <p><strong>Devido às restrições do YouTube, foi necessário acelerar o vídeo em 2.5x para que pudesse se adequar ao limite de 15 minutos. Entretanto, essa ação comprometeu a qualidade do áudio e infelizmente não havia muitas alternativas disponíveis.</strong></p>
+
                                 <div>
                                     <h2 class="mb-3">1. Introdução</h2>
 

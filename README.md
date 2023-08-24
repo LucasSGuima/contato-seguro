@@ -1,6 +1,6 @@
 ### Documentação da API
 
-A aplicação possui uma mini documentação na rota web default. Ela está disponível temporariamente em https://contato-seguro.lucassilvaguimaraes.com.br/. Vale apena consultar, temos um passo a passo para instalação e uso! E também temos um video online no youtube: (video)
+A aplicação possui uma mini documentação na rota web default. Ela está disponível temporariamente em https://contato-seguro.lucassilvaguimaraes.com.br/. Vale apena consultar, temos um passo a passo para instalação e uso! E também temos um video temporário online no youtube: https://youtu.be/J0YPiMLrQlA (Devido às restrições do YouTube, foi necessário acelerar o vídeo em 2.5x para que pudesse se adequar ao limite de 15 minutos. Entretanto, essa ação comprometeu a qualidade do áudio e infelizmente não havia muitas alternativas disponíveis.)
 
 ### Desafio | Backend
 
@@ -21,11 +21,8 @@ Caso ache a tarefa muito simples e queira implementar algo a mais, será muito b
 
 # Resposta do participante
 
-Assista o video de apresentação da API
-### VIDEO: (video)
-
 Acesse a documentação online da API
-### Documentação Online: (doc)
+### Documentação Online: https://contato-seguro.lucassilvaguimaraes.com.br/
 
 Olá pessoal da Contato Seguro,
 
@@ -41,7 +38,7 @@ Fiz questão de seguir a estrutura do framework e, como parte da solução, crie
 
 Enfrentei uma dificuldade relacionada ao autoincremento no banco de dados SQLite, que não estava funcionando conforme o esperado. Por conta disso, optei por implementar manualmente a funcionalidade de autoincremento na coluna "id". Essa abordagem permitiu que eu utilizasse o Eloquent do Laravel de maneira mais eficiente e limpa.
 
-O projeto está completo e detalhado, e para uma compreensão mais abrangente, gravei um vídeo demonstrando o projeto em ação. Convido vocês a assistirem o vídeo (video), pois acredito que ajudará a visualizar melhor a estrutura e os detalhes do projeto. E também a consultar a nossa documentação online: (doc)
+O projeto está completo e detalhado, e para uma compreensão mais abrangente, gravei um vídeo demonstrando o projeto em ação. Convido vocês a assistirem o vídeo https://youtu.be/J0YPiMLrQlA, pois acredito que ajudará a visualizar melhor a estrutura e os detalhes do projeto. E também a consultar a nossa documentação online: https://contato-seguro.lucassilvaguimaraes.com.br/ (Devido às restrições do YouTube, foi necessário acelerar o vídeo em 2.5x para que pudesse se adequar ao limite de 15 minutos. Entretanto, essa ação comprometeu a qualidade do áudio e infelizmente não havia muitas alternativas disponíveis.)
 
 A dedicação a esse projeto é de extrema importância para mim, pois vejo nele uma oportunidade valiosa que representa muito sobre meu futuro pessoal e profissional. Estou comprometido ao máximo em entregá-lo da melhor forma possível, considerando todas as nuances envolvidas.
 
