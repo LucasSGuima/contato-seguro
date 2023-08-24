@@ -1,8 +1,8 @@
-## Documentação da API
+### Documentação da API
 
 A aplicação possui uma mini documentação na rota web default. Ela está disponível temporariamente em https://contato-seguro.lucassilvaguimaraes.com.br/. Vale apena consultar, temos um passo a passo para instalação e uso! E também temos um video online no youtube: (video)
 
-# Desafio | Backend
+### Desafio | Backend
 
 O desafio consiste em usar a base de dados em SQLite disponibilizada e criar uma **rota de uma API REST** que **liste e filtre** todos os dados. Serão 10 registros sobre os quais precisamos que seja criado um filtro utilizando parâmetros na url (ex: `/registros?deleted=0&type=sugestao`) e retorne todos resultados filtrados em formato JSON.
 
@@ -19,13 +19,13 @@ Caso você já tenha alguma experiência com Docker ou queira se aventurar, inse
 
 Caso ache a tarefa muito simples e queira implementar algo a mais, será muito bem visto. Nossa sugestão é implementar novos filtros (ex: `order_by`, `limit`, `offset`), outros métodos REST (`GET/{id}`, `POST`, `DELETE`, `PUT`, `PATCH`), testes unitários etc. Só pedimos que, caso faça algo do tipo, nos explique na _Resposta do participante_ abaixo.
 
-### Resposta do participante
+# Resposta do participante
 
 Assista o video de apresentação da API
-# VIDEO: (video)
+### VIDEO: (video)
 
 Acesse a documentação online da API
-# Documentação Online: (doc)
+### Documentação Online: (doc)
 
 Olá pessoal da Contato Seguro,
 
@@ -47,7 +47,7 @@ A dedicação a esse projeto é de extrema importância para mim, pois vejo nele
 
 Agradeço pela consideração e estou à disposição para quaisquer esclarecimentos.
 
-#### Métodos para consulta com filtros
+### Métodos para consulta com filtros
 
 | Método | Url               | Rota        | Descrição                                                  |
 | :----- | :----------       | :---------  | :----------------------------------                        |
@@ -77,7 +77,7 @@ Agradeço pela consideração e estou à disposição para quaisquer esclarecime
 | :----- | :----------       | :---------                    | :----------------------------------                                 |
 | GET    | `localhost/api/`  | `registros?limit=1&offset=10` | Responsável por receber as informações com filtro limit e offset.   |
 
-#### Métodos CRUD
+### Métodos CRUD
 
 | Método | Url               | Rota                 | Descrição                                                     |
 | :----- | :----------       | :---------           | :----------------------------------                           |
@@ -87,7 +87,7 @@ Agradeço pela consideração e estou à disposição para quaisquer esclarecime
 | :----- | :----------       | :---------           | :----------------------------------                           |
 | POST   | `localhost/api/`  | `/registros`         | Responsável por gravar as informações de um elemento.         |
 
-# Exemplo de corpo
+#### Exemplo de corpo
 ```http
     {
         "type": "duvida",
@@ -104,7 +104,7 @@ Agradeço pela consideração e estou à disposição para quaisquer esclarecime
 | :----- | :----------       | :---------           | :----------------------------------                                       |
 | PATCH  | `localhost/api/`  | `/registros/{id}`    | Responsável por atualizar parcialmente as informações de um elemento.     |
 
-# Exemplo de corpo
+#### Exemplo de corpo
 ```http
     {
         "message": "Teste PATCH"
@@ -115,7 +115,7 @@ Agradeço pela consideração e estou à disposição para quaisquer esclarecime
 | :----- | :----------       | :---------           | :----------------------------------                           |
 | PUT    | `localhost/api/`  | `/registros/{id}`    | Responsável por atualizar as informações de um elemento.      |
 
-# Exemplo de corpo
+#### Exemplo de corpo
 ```http
     {
         "type": "duvida",
