@@ -1,66 +1,142 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Documentação da API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A aplicação possui uma mini documentação na rota web default. Ela está disponível temporariamente em https://contato-seguro.lucassilvaguimaraes.com.br/. Vale apena consultar, temos um passo a passo para instalação e uso! E também temos um video online no youtube: (video)
 
-## About Laravel
+# Desafio | Backend
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+O desafio consiste em usar a base de dados em SQLite disponibilizada e criar uma **rota de uma API REST** que **liste e filtre** todos os dados. Serão 10 registros sobre os quais precisamos que seja criado um filtro utilizando parâmetros na url (ex: `/registros?deleted=0&type=sugestao`) e retorne todos resultados filtrados em formato JSON.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Você é livre para escolher o framework que desejar, ou não utilizar nenhum. O importante é que possamos buscar todos os dados acessando a rota `/registros` da API e filtrar utilizando os parâmetros `deleted` e `type`.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* deleted: Um filtro de tipo `boolean`. Ou seja, quando filtrado por `0` (false) deve retornar todos os registros que **não** foram marcados como removidos, quando filtrado por `1` (true) deve retornar todos os registros que foram marcados como removidos.
+* type: Categoria dos registros. Serão 3 categorias, `denuncia`, `sugestao` e `duvida`. Quando filtrado por um `type` (ex: `denuncia`), deve retornar somente os registros daquela categoria.
 
-## Learning Laravel
+O código deve ser implementado no diretorio /source. O bando de dados em formato SQLite estão localizados em /data/db.sq3.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Caso tenha alguma dificuldade em configurar seu ambiente e utilizar o SQLite, vamos disponibilizar os dados em formato array. Atenção: dê preferência à utilização do banco SQLite.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Caso você já tenha alguma experiência com Docker ou queira se aventurar, inserimos um `docker-compose.yml` configurado para rodar o ambiente (utilizando a porta 8000).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Caso ache a tarefa muito simples e queira implementar algo a mais, será muito bem visto. Nossa sugestão é implementar novos filtros (ex: `order_by`, `limit`, `offset`), outros métodos REST (`GET/{id}`, `POST`, `DELETE`, `PUT`, `PATCH`), testes unitários etc. Só pedimos que, caso faça algo do tipo, nos explique na _Resposta do participante_ abaixo.
 
-## Laravel Sponsors
+### Resposta do participante
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Assista o video de apresentação da API
+# VIDEO: (video)
 
-### Premium Partners
+Acesse a documentação online da API
+# Documentação Online: (doc)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Olá pessoal da Contato Seguro,
 
-## Contributing
+Gostaria de apresentar a minha solução para o desafio proposto. Diante das opções de frameworks PHP disponíveis para a criação da API, optei pelo Laravel devido à sua popularidade e à diversidade de ferramentas que oferece para construir APIs de qualidade.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Minha solução segue uma série de etapas bem estruturadas, com verificações cuidadosas para lidar com exceções. Começando pelo arquivo Handler.php, configurei-o para tratar exceções 404, garantindo que sempre seja retornado um JSON com a mensagem "Record not found". Isso evita retornos em HTML e outras respostas indesejadas.
 
-## Code of Conduct
+Além disso, implementei o middleware EnvironmentCheckMiddleware.php para prevenir erros de conexão com o banco de dados. Dessa forma, em caso de falha na conexão, o middleware responde com um JSON contendo o código 500 e a mensagem "Erro ao conectar-se ao banco de dados".
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+No que diz respeito às rotas, criei todas as operações RESTful (GET, POST, PATCH, PUT e DELETE) no arquivo de rotas, redirecionando cada uma para os respectivos métodos no RecordController.php. Nesse controlador, implementei as verificações de dados passados nas requisições e atendi aos requisitos essenciais e opcionais do desafio.
 
-## Security Vulnerabilities
+Fiz questão de seguir a estrutura do framework e, como parte da solução, criei 16 testes unitários abrangendo as principais funcionalidades do projeto.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Enfrentei uma dificuldade relacionada ao autoincremento no banco de dados SQLite, que não estava funcionando conforme o esperado. Por conta disso, optei por implementar manualmente a funcionalidade de autoincremento na coluna "id". Essa abordagem permitiu que eu utilizasse o Eloquent do Laravel de maneira mais eficiente e limpa.
 
-## License
+O projeto está completo e detalhado, e para uma compreensão mais abrangente, gravei um vídeo demonstrando o projeto em ação. Convido vocês a assistirem o vídeo (video), pois acredito que ajudará a visualizar melhor a estrutura e os detalhes do projeto. E também a consultar a nossa documentação online: (doc)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+A dedicação a esse projeto é de extrema importância para mim, pois vejo nele uma oportunidade valiosa que representa muito sobre meu futuro pessoal e profissional. Estou comprometido ao máximo em entregá-lo da melhor forma possível, considerando todas as nuances envolvidas.
+
+Agradeço pela consideração e estou à disposição para quaisquer esclarecimentos.
+
+#### Métodos para consulta com filtros
+
+| Método | Url               | Rota        | Descrição                                                  |
+| :----- | :----------       | :---------  | :----------------------------------                        |
+| GET    | `localhost/api/`  | `registros` | Responsável por receber todas as informações sem filtro.   |
+
+| Método | Url               | Rota                                                            | Descrição                                                           |
+| :----- | :----------       | :---------                                                      | :----------------------------------                                 |
+| GET    | `localhost/api/`  | `registros?deleted=0&type=duvida&order_by=id&offset=0&limit=10` | Responsável por receber as informações com todos filtro declarados. |
+
+| Método | Url               | Rota                  | Descrição                                                     |
+| :----- | :----------       | :---------            | :----------------------------------                           |
+| GET    | `localhost/api/`  | `registros?deleted=1` | Responsável por receber as informações com filtro deleted.    |
+
+| Método | Url               | Rota                      | Descrição                                                 |
+| :----- | :----------       | :---------                | :----------------------------------                       |
+| GET    | `localhost/api/`  | `registros?type=sugestao` | Responsável por receber as informações com filtro type.   |
+
+| Método | Url               | Rota                       | Descrição                                                     |
+| :----- | :----------       | :---------                 | :----------------------------------                           |
+| GET    | `localhost/api/`  | `registros?order_by=type`  | Responsável por receber as informações com filtro order_by.   |
+
+| Método | Url               | Rota                | Descrição                                                  |
+| :----- | :----------       | :---------          | :----------------------------------                        |
+| GET    | `localhost/api/`  | `registros?limit=3` | Responsável por receber as informações com filtro limit.   |
+
+| Método | Url               | Rota                          | Descrição                                                           |
+| :----- | :----------       | :---------                    | :----------------------------------                                 |
+| GET    | `localhost/api/`  | `registros?limit=1&offset=10` | Responsável por receber as informações com filtro limit e offset.   |
+
+#### Métodos CRUD
+
+| Método | Url               | Rota                 | Descrição                                                     |
+| :----- | :----------       | :---------           | :----------------------------------                           |
+| GET    | `localhost/api/`  | `/registros/{id}`    | Responsável por receber as informações de um unico elemento.  |
+
+| Método | Url               | Rota                 | Descrição                                                     |
+| :----- | :----------       | :---------           | :----------------------------------                           |
+| POST   | `localhost/api/`  | `/registros`         | Responsável por gravar as informações de um elemento.         |
+
+# Exemplo de corpo
+```http
+    {
+        "type": "duvida",
+        "message": "Teste POST",
+        "is_identified": 0,
+        "whistleblower_name": null,
+        "whistleblower_birth": null,
+        "created_at": "2021-06-30 18:47:23",
+        "deleted": 1
+    }
+```
+
+| Método | Url               | Rota                 | Descrição                                                                 |
+| :----- | :----------       | :---------           | :----------------------------------                                       |
+| PATCH  | `localhost/api/`  | `/registros/{id}`    | Responsável por atualizar parcialmente as informações de um elemento.     |
+
+# Exemplo de corpo
+```http
+    {
+        "message": "Teste PATCH"
+    }
+```
+
+| Método | Url               | Rota                 | Descrição                                                     |
+| :----- | :----------       | :---------           | :----------------------------------                           |
+| PUT    | `localhost/api/`  | `/registros/{id}`    | Responsável por atualizar as informações de um elemento.      |
+
+# Exemplo de corpo
+```http
+    {
+        "type": "duvida",
+        "message": "Teste PUT",
+        "is_identified": 0,
+        "whistleblower_name": null,
+        "whistleblower_birth": null,
+        "created_at": "2021-06-30 18:47:23",
+        "deleted": 1
+    }
+```
+
+| Método | Url               | Rota                 | Descrição                                                     |
+| :----- | :----------       | :---------           | :----------------------------------                           |
+| DELETE | `localhost/api/`  | `/registros/{id}`    | Responsável por deletar as informações de um  elemento.       |
+
+## Etiquetas
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+
+## Autores
+
+- [@LucasSGuima](https://www.github.com/LucasSGuima)
