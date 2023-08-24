@@ -195,9 +195,19 @@
 
                                                             <pre>DB_CONNECTION=sqlite<br>DB_DATABASE=/var/www/html/database/db.sq3 (Caminho Absoluto)</pre>
 
-                                                            <p>
-                                                                Certifique-se de substituir o Caminho Absoluto, para a configuração correta do seu banco de dados.
-                                                            </p>
+                                                            <div class="card p-5 mb-3">
+                                                                <p>
+                                                                    Certifique-se de substituir o Caminho Absoluto, para a configuração correta do seu banco de dados.
+                                                                </p>
+
+                                                                <p>
+                                                                    Caso esteja com dificuldade de encontrar o caminho absoluto você pode usar o comando <pre>php artisan tinker</pre>
+                                                                </p>
+
+                                                                <p>
+                                                                    E use o comando <pre>database_path();</pre> e incremente com o nome do banco de dados que é db.sq3
+                                                                </p>
+                                                            </div>
                                                         </div>
 
                                                         <ol start="9">
