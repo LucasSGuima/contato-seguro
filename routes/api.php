@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware([EnvironmentCheckMiddleware::class])->group(function () {
-    Route::get('/registros',            [RecordController::class, 'record']);
-    Route::post('/registros',           [RecordController::class, 'store']);
+    Route::get('/registros',                [RecordController::class, 'record']);
+    Route::post('/registros',               [RecordController::class, 'store']);
     Route::get('/registros/{record}',       [RecordController::class, 'show']);
     Route::put('/registros/{record}',       [RecordController::class, 'update']);
     Route::patch('/registros/{record}',     [RecordController::class, 'update']);
